@@ -25,6 +25,38 @@
   <p>We will take our time in setting up this website, so that it is of the best quality. In the meanwhile, please continue to support us!</p>
   <p>Here's the countdown timer below, the wait is a lot :(, BUT we promise it will be worth it :)</p>
   <!--CountDownTimer-->
-  <iframe src="http://free.timeanddate.com/countdown/i74c72j8/n235/cf12/cm0/cu4/ct5/cs0/ca2/cr0/ss0/cac000/cpc000/pcfff/tc66c/fs100/szw448/szh189/tatTime%20left%20to%20Event%20in/tac000/tptTime%20since%20Event%20started%20in/tpc000/mac000/mpc000/iso2020-08-05T00:00:00" allowTransparency="true" frameborder="0" width="282" height="97"></iframe>
+  <!-- Display the countdown timer in an element -->
+  <p id="demo"></p>
+
+  <script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("Aug 5, 2020 00:00:00").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+  </script>
 </body>
 </html>
